@@ -22,11 +22,11 @@
         app(
         <include refid="app_fields" />
         )
-        VALUES (#{id}, #{name}, #{description},#{status},#{createtime});
-        <selectKey resultType="long" keyProperty="id">
+        VALUES (next value for MYCATSEQ_GLOBAL, #{name}, #{description},#{status},#{createtime});
+       <!-- <selectKey resultType="long" keyProperty="id">
             select
             LAST_INSERT_ID() as id
-        </selectKey>
+        </selectKey>-->
     </insert>
 
     <select id="totalCount" parameterType="map" resultType="java.lang.Long">

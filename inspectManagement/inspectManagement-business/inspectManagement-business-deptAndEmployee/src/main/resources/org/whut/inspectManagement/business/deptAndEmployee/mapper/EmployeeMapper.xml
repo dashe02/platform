@@ -88,7 +88,7 @@
 
     <select id="getListByAppId" parameterType="java.lang.Long" resultType="map">
         select e.*,u.image
-        from employee e,user u
+        from employee e,users u
         where e.userId=u.id and  e.APPID=#{appId}
     </select>
 

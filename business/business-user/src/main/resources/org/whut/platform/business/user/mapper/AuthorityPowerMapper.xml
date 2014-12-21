@@ -21,7 +21,7 @@
         authority_power(
         <include refid="authority_power_fields" />
         )
-        VALUES (#{id}, #{powerId}, #{authorityId},#{authorityName},#{powerResource});
+        VALUES (next value for MYCATSEQ_GLOBAL, #{powerId}, #{authorityId},#{authorityName},#{powerResource});
         <selectKey resultType="long" keyProperty="id">
             select
             LAST_INSERT_ID() as id

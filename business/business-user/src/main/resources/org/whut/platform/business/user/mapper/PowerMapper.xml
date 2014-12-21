@@ -17,18 +17,18 @@
     <insert id="add" parameterType="Power" keyProperty="id"
             useGeneratedKeys="true">
         INSERT INTO
-        power(
+        tpower(
         <include refid="power_fields" />
         )
-        VALUES (#{id}, #{resource}, #{type},#{description});
-        <selectKey resultType="long" keyProperty="id">
+        VALUES (next value for MYCATSEQ_GLOBAL, #{resource}, #{type},#{description});
+   <!--     <selectKey resultType="long" keyProperty="id">
             select
             LAST_INSERT_ID() as id
-        </selectKey>
+        </selectKey>-->
     </insert>
 
     <update id="update" parameterType="Power">
-        UPDATE power
+        UPDATE tpower
         <set>
             <if test="resource != null">RESOURCE=#{resource},</if>
             <if test="type != null">TYPE=#{type},</if>
@@ -38,7 +38,7 @@
     </update>
 
     <delete id="delete" parameterType="Power">
-        DELETE FROM power
+        DELETE FROM tpower
         <where>
             <if test="id != null">ID=#{id}</if>
         </where>
@@ -48,13 +48,13 @@
     <select id="get" parameterType="Power" resultMap="powerResultMap">
         SELECT
         <include refid="power_fields" />
-        FROM power WHERE ID=#{id}
+        FROM tpower WHERE ID=#{id}
     </select>
 
     <select id="findByCondition" parameterType="map" resultMap="powerResultMap">
         SELECT
         <include refid="power_fields" />
-        FROM power
+        FROM tpower
         <where>
             <if test="resource!=null">RESOURCE=#{resource}</if>
             <if test="type!=null">AND TYPE=#{type}</if>
@@ -63,13 +63,13 @@
 
     <select id = "getIdByResource" parameterType="java.lang.String" resultType="java.lang.Long">
         SELECT ID
-        FROM power
+        FROM tpower
         WHERE RESOURCE=#{resource}
     </select>
 
     <select id="findByResource" parameterType="java.lang.String" resultMap="powerResultMap">
         SELECT
         <include refid="power_fields"/>
-        FROM power WHERE RESOURCE=#{resource}
+        FROM tpower WHERE RESOURCE=#{resource}
     </select>
 </mapper>

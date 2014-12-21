@@ -22,7 +22,7 @@
         authority_menu(
         <include refid="authoritymenu_fields" />
         )
-        VALUES (#{id}, #{authorityName}, #{authorityId},#{menuId},#{menuName});
+        VALUES (next value for MYCATSEQ_GLOBAL, #{authorityName}, #{authorityId},#{menuId},#{menuName});
         <selectKey resultType="long" keyProperty="id">
             select
             LAST_INSERT_ID() as id

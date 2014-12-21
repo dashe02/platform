@@ -22,11 +22,11 @@
         menu(
         <include refid="menu_fields" />
         )
-        VALUES (#{id}, #{name}, #{level},#{url},#{parentname},#{pid});
-        <selectKey resultType="long" keyProperty="id">
+        VALUES (next value for MYCATSEQ_GLOBAL, #{name}, #{level},#{url},#{parentname},#{pid});
+        <!--<selectKey resultType="long" keyProperty="id">
             select
             LAST_INSERT_ID() as id
-        </selectKey>
+        </selectKey>-->
     </insert>
 
     <update id="update" parameterType="Menu">

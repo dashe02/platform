@@ -56,7 +56,7 @@
     </update>
     <select id="findByCondition" parameterType="map" resultType="map">
        SELECT a.userName,a.userId,a.deviceId,a.deviceNum,a.devName,a.inspectTableName,a.address,a.lng,a.lat,b.image
-       FROM inspect_locate a,user b
+       FROM inspect_locate a,users b
        <where>
            a.userId=b.id and a.appId=#{appId}
            <if test="updateTime!=null">and a.UPDATETIME>=#{updateTime}</if>

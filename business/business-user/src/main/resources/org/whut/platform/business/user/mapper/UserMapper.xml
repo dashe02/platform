@@ -21,7 +21,7 @@
     <insert id="add" parameterType="User"  keyProperty="id"
             useGeneratedKeys="true">
         INSERT INTO
-        user(
+        users(
         <include refid="user_fields" />
         )
         VALUES (#{id}, #{name}, #{password},#{sex},#{role},#{status},#{appId},#{image});
@@ -33,7 +33,7 @@
 
     <select id="totalCount" parameterType="map" resultType="java.lang.Long">
         SELECT count(*)
-        FROM user
+        FROM users
         <where>
             <if test="name != null">NAME=#{name}</if>
         </where>
@@ -41,7 +41,7 @@
 
 
     <update id="update" parameterType="User">
-        UPDATE user
+        UPDATE users
         <set>
             <if test="name != null">NAME=#{name},</if>
             <if test="password != null">PASSWORD=#{password},</if>
@@ -54,7 +54,7 @@
     </update>
 
     <update id="updateUserImage" parameterType="User">
-        UPDATE user
+        UPDATE users
         <set>
             <if test="image != null">IMAGE=#{image}</if>
         </set>
@@ -62,7 +62,7 @@
     </update>
 
     <delete id="delete" parameterType="User">
-        DELETE FROM user
+        DELETE FROM users
         <where>
             <if test="id != null">ID=#{id}</if>
 
@@ -73,19 +73,19 @@
     <select id="get" parameterType="User" resultMap="userResultMap">
         SELECT
         <include refid="user_fields" />
-        FROM user WHERE ID=#{id}
+        FROM users WHERE ID=#{id}
     </select>
 
     <select id="findByName" parameterType="java.lang.String" resultMap="userResultMap">
         SELECT
         <include refid="user_fields" />
-        FROM user where name=#{name}
+        FROM users where name=#{name}
     </select>
 
     <select id="findByCondition" parameterType="map" resultMap="userResultMap">
         SELECT
         <include refid="user_fields"/>
-        FROM user
+        FROM users
         <where>
             <if test="name!=null">NAME=#{name}</if>
             <if test="password!=null">AND PASSWORD=#{password}</if>
@@ -99,13 +99,13 @@
     <select id="getIdByName" parameterType="java.lang.String" resultType="java.lang.Long">
          SELECT
          id
-         FROM user WHERE NAME=#{name}
+         FROM users WHERE NAME=#{name}
      </select>
 
     <select id="getById" parameterType="java.lang.Long" resultType="User">
         SELECT
         <include refid="user_fields"/>
-        from user
+        from users
         where ID=#{id}
     </select>
 
