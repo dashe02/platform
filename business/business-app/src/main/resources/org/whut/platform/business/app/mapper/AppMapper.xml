@@ -22,14 +22,21 @@
         app(
         <include refid="app_fields" />
         )
+<<<<<<< HEAD
         VALUES (next value for COBARSEQ_GLOBAL, #{name}, #{description},#{status},#{createtime});
+=======
+        VALUES (next value for MYCATSEQ_GLOBAL, #{name}, #{description},#{status},#{createtime});
+>>>>>>> e52604c447e01b5cb16018b5d440ca59549f18dc
        <!-- <selectKey resultType="long" keyProperty="id">
             select
             LAST_INSERT_ID() as id
         </selectKey>-->
     </insert>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e52604c447e01b5cb16018b5d440ca59549f18dc
     <select id="totalCount" parameterType="map" resultType="java.lang.Long">
         SELECT count(*)
         FROM app
